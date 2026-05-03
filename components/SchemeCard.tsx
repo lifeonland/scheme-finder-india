@@ -21,19 +21,17 @@ const SchemeCard: React.FC<SchemeCardProps> = ({ scheme }) => {
         </div>
 
         <h3 className="text-2xl font-black text-white leading-tight mb-4 group-hover:text-premium-primary transition-colors">
-          {typeof scheme.name === 'string' ? scheme.name : scheme.name.en}
+          {scheme.name}
         </h3>
         
         <p className="text-white/40 font-medium text-sm leading-relaxed mb-8 flex-1">
-          {typeof scheme.description === 'string' ? scheme.description : scheme.description.en}
+          {scheme.description}
         </p>
 
         <div className="space-y-4 mb-10">
           <div className="flex items-center p-4 rounded-2xl bg-white/[0.03] border border-white/5">
             <CheckCircle2 className="w-5 h-5 text-premium-accent mr-3" />
-            <p className="text-sm font-bold text-white/80">
-              {typeof scheme.benefit === 'string' ? scheme.benefit : scheme.benefit.en}
-            </p>
+            <p className="text-sm font-bold text-white/80">{scheme.benefit}</p>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
