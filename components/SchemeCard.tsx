@@ -21,11 +21,11 @@ const SchemeCard: React.FC<SchemeCardProps> = ({ scheme }) => {
         </div>
 
         <h3 className="text-2xl font-black text-white leading-tight mb-4 group-hover:text-premium-primary transition-colors">
-          {scheme.name}
+          {typeof scheme.name === 'string' ? scheme.name : scheme.name.en}
         </h3>
         
         <p className="text-white/40 font-medium text-sm leading-relaxed mb-8 flex-1">
-          {scheme.description}
+          {typeof scheme.description === 'string' ? scheme.description : scheme.description.en}
         </p>
 
         <div className="space-y-4 mb-10">
