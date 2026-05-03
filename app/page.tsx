@@ -16,11 +16,11 @@ export default function Home() {
 
   const eligibleSchemes = useMemo(() => {
     if (!userProfile) return [];
-    return filterSchemes(schemesData as Scheme[], userProfile);
+    return filterSchemes(schemesData as any[], userProfile);
   }, [userProfile]);
 
   const allSchemes = useMemo(() => {
-    return schemesData as Scheme[];
+    return schemesData as any[];
   }, []);
 
   const handleStart = () => {
