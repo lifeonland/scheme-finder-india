@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #050505;
+  color: #FFFFFF;
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-2xl;
+  }
+  
+  .premium-button {
+    @apply relative overflow-hidden bg-white text-black font-bold px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl hover:shadow-white/20;
+  }
+
+  .premium-input {
+    @apply w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-4 text-lg focus:ring-2 focus:ring-premium-primary focus:border-transparent outline-none transition-all placeholder:text-white/20;
+  }
+}
+
+.animate-reveal {
+  animation: reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
