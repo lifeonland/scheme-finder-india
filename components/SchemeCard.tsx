@@ -7,6 +7,11 @@ interface SchemeCardProps {
 }
 
 const SchemeCard: React.FC<SchemeCardProps> = ({ scheme }) => {
+  // Ensure we render name, description, and benefit as strings
+  const name = typeof scheme.name === 'string' ? scheme.name : (scheme.name as any).en || '';
+  const description = typeof scheme.description === 'string' ? scheme.description : (scheme.description as any).en || '';
+  const benefit = typeof scheme.benefit === 'string' ? scheme.benefit : (scheme.benefit as any).en || '';
+
   return (
     <div className="group relative glass-card rounded-[2.5rem] p-8 flex flex-col h-full hover:border-white/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden animate-reveal">
       <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-premium-primary/20 rounded-full blur-3xl group-hover:bg-premium-accent/40 transition-colors duration-500"></div>
@@ -21,17 +26,17 @@ const SchemeCard: React.FC<SchemeCardProps> = ({ scheme }) => {
         </div>
 
         <h3 className="text-2xl font-black text-white leading-tight mb-4 group-hover:text-premium-primary transition-colors">
-          {scheme.name}
+          {name}
         </h3>
         
         <p className="text-white/40 font-medium text-sm leading-relaxed mb-8 flex-1">
-          {scheme.description}
+          {description}
         </p>
 
         <div className="space-y-4 mb-10">
           <div className="flex items-center p-4 rounded-2xl bg-white/[0.03] border border-white/5">
             <CheckCircle2 className="w-5 h-5 text-premium-accent mr-3" />
-            <p className="text-sm font-bold text-white/80">{scheme.benefit}</p>
+            <p className="text-sm font-bold text-white/80">{benefit}</p>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
