@@ -64,6 +64,8 @@ const InputForm: React.FC<InputFormProps> = ({ onSearch }) => {
               >
                 <option value="" disabled className="bg-black">Select Occupation</option>
                 <option value="student" className="bg-black">Student</option>
+                <option value="school_student" className="bg-black">School Student</option>
+                <option value="it_professional" className="bg-black">IT Professional</option>
                 <option value="farmer" className="bg-black">Farmer</option>
                 <option value="unemployed" className="bg-black">Unemployed</option>
                 <option value="business" className="bg-black">Business Owner</option>
