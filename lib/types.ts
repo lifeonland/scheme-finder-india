@@ -9,6 +9,8 @@ export interface Scheme {
   minAge: number | null;
   maxAge: number | null;
   link: string;
+  relevance?: 'highly-relevant' | 'might-apply' | 'explore';
+  applicationRequirements?: string[];
 }
 
 export interface UserProfile {

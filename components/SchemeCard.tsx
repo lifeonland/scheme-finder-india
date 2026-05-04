@@ -1,16 +1,18 @@
 import React from 'react';
 import { Scheme } from '@/lib/types';
-import { ExternalLink, CheckCircle2, User, Wallet } from 'lucide-react';
+import { ExternalLink, CheckCircle2, User, Wallet, FileText } from 'lucide-react';
 
 interface SchemeCardProps {
   scheme: Scheme;
+  relevance?: 'highly-relevant' | 'might-apply' | 'explore';
 }
 
-const SchemeCard: React.FC<SchemeCardProps> = ({ scheme }) => {
-  // Ensure we render name, description, and benefit as strings
-  const name = typeof scheme.name === 'string' ? scheme.name : (scheme.name as any).en || '';
-  const description = typeof scheme.description === 'string' ? scheme.description : (scheme.description as any).en || '';
-  const benefit = typeof scheme.benefit === 'string' ? scheme.benefit : (scheme.benefit as any).en || '';
+const SchemeCard: React.FC<SchemeCardProps> = ({ scheme, relevance }) => {
+  // Handle both string and object formats for backward compatibility
+  const schemeData = scheme as any; // Cast to any to handle mixed data types
+  const name = typeof schemeData.name === 'string' ? schemeData.name : schemeData.name?.en || 'Unknown Scheme';
+  const description = typeof schemeData.description === 'string' ? schemeData.description : schemeData.description?.en || 'No description available';
+  const benefit = typeof schemeData.benefit === 'string' ? schemeData.benefit : schemeData.benefit?.en || 'No benefit information';
 
   return (
     <div className="group relative glass-card rounded-[2.5rem] p-8 flex flex-col h-full hover:border-white/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden animate-reveal">
@@ -18,10 +20,22 @@ const SchemeCard: React.FC<SchemeCardProps> = ({ scheme }) => {
       
       <div className="relative z-10 flex flex-col h-full">
         <div className="flex justify-between items-start mb-10">
-          <div className="px-4 py-1.5 rounded-full bg-white/5 border border-white/5">
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">
-              {scheme.category}
-            </span>
+          <div className="flex items-center space-x-3">
+            <div className="px-4 py-1.5 rounded-full bg-white/5 border border-white/5">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/60">
+                {scheme.category}
+              </span>
+            </div>
+            {relevance && (
+              <div className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ${
+                relevance === 'highly-relevant' ? 'bg-green-500/20 text-green-400 border border-green-500/30' :
+                relevance === 'might-apply' ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30' :
+                'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+              }`}>
+                {relevance === 'highly-relevant' ? '✅ Highly Relevant' :
+                 relevance === 'might-apply' ? '👍 Might Apply' : 'ℹ️ Explore'}
+              </div>
+            )}
           </div>
         </div>
 
@@ -34,10 +48,26 @@ const SchemeCard: React.FC<SchemeCardProps> = ({ scheme }) => {
         </p>
 
         <div className="space-y-4 mb-10">
-          <div className="flex items-center p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+          <div className="flex items-center p-4 rounded-2xl bg-white/[0.03] border border-white/10 shadow-lg">
             <CheckCircle2 className="w-5 h-5 text-premium-accent mr-3" />
-            <p className="text-sm font-bold text-white/80">{benefit}</p>
+            <p className="text-lg font-black text-premium-accent">{benefit}</p>
           </div>
+
+          {/* Application Requirements */}
+          {schemeData.applicationRequirements && schemeData.applicationRequirements.length > 0 && (
+            <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5">
+              <div className="flex items-center text-[9px] font-black uppercase tracking-widest text-white/20 mb-3">
+                <FileText className="w-3 h-3 mr-1" /> Required Documents
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {schemeData.applicationRequirements.map((req: string, index: number) => (
+                  <span key={index} className="px-2 py-1 text-[8px] font-bold bg-premium-primary/20 text-premium-primary rounded-lg border border-premium-primary/30">
+                    {req}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="grid grid-cols-2 gap-4">
             <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5">
@@ -63,9 +93,9 @@ const SchemeCard: React.FC<SchemeCardProps> = ({ scheme }) => {
           href={scheme.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full flex items-center justify-center space-x-2 bg-white text-black font-black uppercase tracking-widest text-[10px] py-4 rounded-2xl hover:bg-premium-primary hover:text-white transition-all shadow-xl shadow-black group/btn"
+          className="w-full flex items-center justify-center space-x-2 bg-premium-gradient text-white font-black uppercase tracking-widest text-[10px] py-4 rounded-2xl hover:bg-premium-primary hover:scale-105 transition-all shadow-xl shadow-black group/btn"
         >
-          <span>Official Application</span>
+          <span>Apply Now</span>
           <ExternalLink className="w-3.5 h-3.5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
         </a>
       </div>

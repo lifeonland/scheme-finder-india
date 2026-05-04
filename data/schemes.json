@@ -9,7 +9,8 @@
     "incomeLimit": 200000,
     "minAge": 18,
     "maxAge": 100,
-    "link": "https://pmkisan.gov.in"
+    "link": "https://pmkisan.gov.in",
+    "applicationRequirements": ["Aadhaar", "Land records", "Bank account"]
   },
   {
     "id": "2",
@@ -21,7 +22,8 @@
     "incomeLimit": null,
     "minAge": 18,
     "maxAge": 100,
-    "link": "https://pmvishwakarma.gov.in"
+    "link": "https://pmvishwakarma.gov.in",
+    "applicationRequirements": ["Aadhaar", "Income certificate", "Bank account"]
   },
   {
     "id": "3",
@@ -33,7 +35,8 @@
     "incomeLimit": null,
     "minAge": 18,
     "maxAge": 100,
-    "link": "https://www.startupindia.gov.in"
+    "link": "https://www.startupindia.gov.in",
+    "applicationRequirements": ["Aadhaar", "Business registration", "Bank account"]
   },
   {
     "id": "4",
@@ -45,7 +48,8 @@
     "incomeLimit": null,
     "minAge": 18,
     "maxAge": 100,
-    "link": "https://pmsvanidhi.mohua.gov.in"
+    "link": "https://pmsvanidhi.mohua.gov.in",
+    "applicationRequirements": ["Aadhaar", "Vendor ID", "Bank account"]
   },
   {
     "id": "5",
@@ -57,7 +61,8 @@
     "incomeLimit": 250000,
     "minAge": 0,
     "maxAge": 100,
-    "link": "https://pmjay.gov.in"
+    "link": "https://pmjay.gov.in",
+    "applicationRequirements": ["Aadhaar", "Income certificate"]
   },
   {
     "id": "6",
@@ -69,7 +74,8 @@
     "incomeLimit": null,
     "minAge": 0,
     "maxAge": 10,
-    "link": "https://www.nsiindia.gov.in"
+    "link": "https://www.nsiindia.gov.in",
+    "applicationRequirements": ["Aadhaar", "Birth certificate", "Bank account"]
   },
   {
     "id": "7",
@@ -81,7 +87,8 @@
     "incomeLimit": null,
     "minAge": 18,
     "maxAge": 40,
-    "link": "https://www.npscra.proteantech.in/scheme-details.php"
+    "link": "https://www.npscra.proteantech.in/scheme-details.php",
+    "applicationRequirements": ["Aadhaar", "Bank account"]
   },
   {
     "id": "8",
@@ -93,7 +100,8 @@
     "incomeLimit": null,
     "minAge": 15,
     "maxAge": 45,
-    "link": "https://www.skillindia.gov.in"
+    "link": "https://www.skillindia.gov.in",
+    "applicationRequirements": ["Aadhaar", "Education certificate"]
   },
   {
     "id": "9",
@@ -105,7 +113,8 @@
     "incomeLimit": null,
     "minAge": 18,
     "maxAge": 100,
-    "link": "https://www.standupmitra.in"
+    "link": "https://www.standupmitra.in",
+    "applicationRequirements": ["Aadhaar", "Caste certificate", "Business plan", "Bank account"]
   },
   {
     "id": "10",

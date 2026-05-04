@@ -2,13 +2,14 @@
 
 import React, { useState } from 'react';
 import { UserProfile } from '@/lib/types';
-import { User, Briefcase, IndianRupee, ChevronRight } from 'lucide-react';
+import { User, Briefcase, IndianRupee, ChevronRight, ArrowLeft } from 'lucide-react';
 
 interface InputFormProps {
   onSearch: (profile: UserProfile) => void;
+  onBack?: () => void;
 }
 
-const InputForm: React.FC<InputFormProps> = ({ onSearch }) => {
+const InputForm: React.FC<InputFormProps> = ({ onSearch, onBack }) => {
   const [age, setAge] = useState<string>('');
   const [occupation, setOccupation] = useState<string>('');
   const [income, setIncome] = useState<string>('');
@@ -30,6 +31,16 @@ const InputForm: React.FC<InputFormProps> = ({ onSearch }) => {
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-premium-primary/10 rounded-full blur-[80px]"></div>
         
         <div className="relative z-10">
+          {onBack && (
+            <button
+              onClick={onBack}
+              className="group flex items-center space-x-3 text-[10px] font-black uppercase tracking-[0.4em] text-white/30 hover:text-white transition-colors mb-8"
+            >
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-2 transition-transform" />
+              <span>Back to Home</span>
+            </button>
+          )}
+          
           <h2 className="text-4xl font-black tracking-tighter text-white mb-4">Profile Analysis</h2>
           <p className="text-white/40 font-medium mb-12">Configure your identity to filter the scheme repository.</p>
 
@@ -47,7 +58,7 @@ const InputForm: React.FC<InputFormProps> = ({ onSearch }) => {
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
                 placeholder="00"
-                className="premium-input text-2xl font-black"
+                className="premium-input text-lg font-semibold"
               />
             </div>
 
@@ -60,7 +71,7 @@ const InputForm: React.FC<InputFormProps> = ({ onSearch }) => {
                 required
                 value={occupation}
                 onChange={(e) => setOccupation(e.target.value)}
-                className="premium-input text-xl font-black appearance-none cursor-pointer"
+                className="premium-input text-base font-medium appearance-none cursor-pointer"
               >
                 <option value="" disabled className="bg-black">Select Occupation</option>
                 <option value="student" className="bg-black">Student</option>
@@ -89,7 +100,7 @@ const InputForm: React.FC<InputFormProps> = ({ onSearch }) => {
                 required
                 value={income}
                 onChange={(e) => setIncome(e.target.value)}
-                className="premium-input text-xl font-black appearance-none cursor-pointer"
+                className="premium-input text-base font-medium appearance-none cursor-pointer"
               >
                 <option value="" disabled className="bg-black">Select Range</option>
                 <option value="80000" className="bg-black">Below ₹1,00,000</option>
