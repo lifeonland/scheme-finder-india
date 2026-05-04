@@ -81,7 +81,7 @@
     "incomeLimit": null,
     "minAge": 18,
     "maxAge": 40,
-    "link": "https://npscra.nsdl.co.in"
+    "link": "https://apy.nsdl.co.in/"
   },
   {
     "id": "8",
@@ -141,7 +141,7 @@
     "incomeLimit": 300000,
     "minAge": 18,
     "maxAge": 100,
-    "link": "https://pmayg.nic.in"
+    "link": "https://pmaymis.gov.in/"
   },
   {
     "id": "13",
@@ -174,7 +174,8 @@
     "benefit": "Free Gas connection & Refill",
     "eligibility": ["women", "widow"],
     "incomeLimit": 150000,
-    "minAge": 18, "maxAge": 100,
+    "minAge": 18,
+    "maxAge": 100,
     "link": "https://www.pmuy.gov.in"
   },
   {
@@ -185,7 +186,8 @@
     "benefit": "Zero balance account & Overdraft",
     "eligibility": ["all"],
     "incomeLimit": null,
-    "minAge": 10, "maxAge": 100,
+    "minAge": 10,
+    "maxAge": 100,
     "link": "https://pmjdy.gov.in"
   },
   {
@@ -196,8 +198,9 @@
     "benefit": "Direct monthly pension support",
     "eligibility": ["senior", "widow", "pwd"],
     "incomeLimit": 50000,
-    "minAge": 18, "maxAge": 100,
-    "link": "https://nsap.nic.in"
+    "minAge": 18,
+    "maxAge": 100,
+    "link": "https://nsap.nic.in/"
   },
   {
     "id": "18",
