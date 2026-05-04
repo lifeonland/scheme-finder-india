@@ -2,8 +2,9 @@ import React from 'react';
 import { LayoutGrid, Compass } from 'lucide-react';
 
 interface HeaderProps {
-  onNavigate: (view: 'home' | 'input' | 'results' | 'directory') => void;
+  onNavigate: (view: 'home' | 'input' | 'results' | 'directory' | 'about') => void;
 }
+
 
 const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   return (
