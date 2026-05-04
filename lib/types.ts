@@ -1,16 +1,9 @@
-export interface LocalizedString {
-  en: string;
-  hi?: string;
-  ta?: string;
-  [key: string]: string | undefined;
-}
-
 export interface Scheme {
   id: string;
-  name: LocalizedString;
+  name: string;
   category: string;
-  description: LocalizedString;
-  benefit: LocalizedString;
+  description: string;
+  benefit: string;
   eligibility: string[];
   incomeLimit: number | null;
   minAge: number | null;
