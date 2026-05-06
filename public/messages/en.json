@@ -1,0 +1,86 @@
+{
+  "common": {
+    "india": "India",
+    "official_website": "Official Website",
+    "apply_now": "Apply Now",
+    "required_documents": "Required Documents",
+    "age_group": "Age Group",
+    "income_limit": "Income Limit",
+    "none": "None",
+    "all": "All",
+    "back_to_home": "Back to Home",
+    "go_home": "Go Home"
+  },
+  "nav": {
+    "browse_all": "Browse All",
+    "about": "About",
+    "find_schemes": "Find Schemes"
+  },
+  "hero": {
+    "title_1": "Unlock Your Government Benefits",
+    "title_2": "Made Just for You",
+    "description": "Stop missing out on benefits you're entitled to. Get personalized scheme recommendations that match your profile and unlock financial support.",
+    "feature_1_title": "Personalized Matching",
+    "feature_1_desc": "Based on your age and income",
+    "feature_2_title": "Official Schemes",
+    "feature_2_desc": "Verified government programs",
+    "feature_3_title": "Easy Application",
+    "feature_3_desc": "Direct links and guidance",
+    "start_search": "Start Your Search",
+    "browse_schemes": "Browse All Schemes",
+    "trust_text": "Trusted by thousands of Indians. Free to use. No personal data stored."
+  },
+  "form": {
+    "title": "Profile Analysis",
+    "description": "Configure your identity to filter the scheme repository.",
+    "age_label": "Your Age",
+    "role_label": "Current Role",
+    "role_placeholder": "Select Occupation",
+    "income_label": "Annual Income",
+    "income_placeholder": "Select Range",
+    "submit": "Analyze Eligibility",
+    "occupations": {
+      "student": "Student",
+      "school_student": "School Student",
+      "it_professional": "IT Professional",
+      "farmer": "Farmer",
+      "unemployed": "Unemployed",
+      "business": "Business Owner",
+      "women": "Working Woman",
+      "artisan": "Artisan / Craftsperson",
+      "vendor": "Street Vendor",
+      "worker": "Unorganized Worker",
+      "senior": "Senior Citizen",
+      "pwd": "Person with Disability",
+      "widow": "Widow",
+      "all": "Other"
+    },
+    "income_ranges": {
+      "below_1": "Below ₹1,00,000",
+      "1_to_3": "₹1,00,000 - ₹3,00,000",
+      "3_to_5": "₹3,00,000 - ₹5,00,000",
+      "above_5": "Above ₹5,00,000"
+    }
+  },
+  "results": {
+    "title": "Potential Unlocked.",
+    "directory_title": "Scheme Directory",
+    "refine_profile": "Refine Profile",
+    "count_msg": "Our algorithm identified {count} programs specifically aligned with your profile.",
+    "directory_msg": "Displaying all {count} programs available in our repository.",
+    "no_matches": "No Matches Found.",
+    "no_matches_desc": "No programs found matching your current parameters. Try broadening your criteria.",
+    "reset": "Reset Parameters",
+    "highly_relevant": "Relevant",
+    "might_apply": "Potential",
+    "explore": "Explore"
+  },
+  "footer": {
+    "description": "Helping you discover relevant government schemes easily.",
+    "quick_links": "Quick Links",
+    "resources": "Resources",
+    "privacy": "Privacy Policy",
+    "terms": "Terms",
+    "copyright": "© {year} Scheme Finder India."
+  }
+}
