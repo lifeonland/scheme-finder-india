@@ -3,65 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f3f4f6;
-  --text-main: #030712;
-  --text-muted: #4b5563;
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(0, 0, 0, 0.1);
-  --premium-primary: #4f46e5;
-}
+  /* Solid Modern Palette */
+  --bg-neutral: #F8FAFC;
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --brand-blue: #4F46E5; /* Reverted Indigo/Purple */
+  --brand-accent: #475569;
 
-.dark {
-  --bg-primary: #030303;
-  --bg-secondary: #0a0a0a;
-  --text-main: #ffffff;
-  --text-muted: #9CA3AF;
-  --glass-bg: rgba(255, 255, 255, 0.02);
-  --glass-border: rgba(255, 255, 255, 0.05);
-  --premium-primary: #818cf8;
+  /* Layout Constants */
+  --border-radius: 0.5rem;
 }
 
 body {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-neutral);
   color: var(--text-main);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
 }
 
 @layer components {
-  .glass-card {
-    background-color: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(24px);
-    @apply shadow-2xl;
-  }
-  
-  .premium-button {
-    @apply relative overflow-hidden bg-black dark:bg-white text-white dark:text-black font-black px-10 py-4 rounded-2xl transition-all duration-500 hover:scale-[1.03] active:scale-95 shadow-2xl;
+  .section-card {
+    background: #FFFFFF;
+    /* Soft-geometric shape: varied corners for a modern, organic look */
+    border-radius: 2rem 0.5rem 2rem 0.5rem;
+    @apply border border-slate-200 shadow-sm transition-all duration-300;
   }
 
-  .premium-input {
-    @apply w-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200 dark:border-white/5 rounded-2xl px-6 py-5 text-lg focus:ring-2 focus:ring-premium-primary/50 focus:border-transparent outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-white/10;
+  .btn-primary {
+    @apply bg-[var(--brand-blue)] text-white px-8 py-3 rounded-[var(--border-radius)] font-semibold text-sm hover:bg-indigo-700 transition-colors shadow-none;
   }
-}
 
-.animate-reveal {
-  animation: reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.typewriter {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 2.5s steps(30, end) forwards;
-}
-
-@keyframes reveal {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+  .btn-secondary {
+    @apply bg-transparent border border-[var(--brand-blue)] text-[var(--brand-blue)] px-8 py-3 rounded-[var(--border-radius)] font-semibold text-sm hover:bg-slate-50 transition-colors;
+  }
 }

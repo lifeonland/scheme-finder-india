@@ -17,20 +17,12 @@ export default function InputPage() {
 
   const handleNavigate = (view: 'home' | 'input' | 'results' | 'directory' | 'about') => {
     switch (view) {
-      case 'home':
-        router.push('/');
-        break;
-      case 'directory':
-        router.push('/directory');
-        break;
-      case 'about':
-        router.push('/about');
-        break;
-      case 'results':
-        router.push('/results');
-        break;
-      default:
-        router.push('/');
+      case 'home': window.location.assign('/'); break;
+      case 'input': break;
+      case 'directory': window.location.assign('/directory'); break;
+      case 'about': window.location.assign('/about'); break;
+      case 'results': window.location.assign('/results'); break;
+      default: window.location.assign('/');
     }
   };
 
