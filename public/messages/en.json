@@ -11,6 +11,13 @@
     "back_to_home": "Back to Home",
     "go_home": "Go Home"
   },
+  "about": {
+    "title_1": "Empowering India,",
+    "title_2": "One Scheme at a Time.",
+    "description": "Scheme Finder is dedicated to simplifying the discovery of central and state government schemes. We bridge the gap between citizens and the support they deserve, ensuring everyone can access opportunities tailored to their needs.",
+    "mission_title": "Our Mission & Vision",
+    "mission_desc": "Our mission is to demystify the complex world of government schemes. We strive to be your trusted, transparent, and efficient guide, ensuring every Indian citizen can effortlessly identify and benefit from the programs designed to uplift them. We envision a future where access to government benefits is straightforward and equitable for all."
+  },
   "nav": {
     "browse_all": "Browse All",
     "about": "About",

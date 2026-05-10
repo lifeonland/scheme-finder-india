@@ -12,7 +12,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onStart, onViewDirectory }) => {
   const router = useRouter();
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
 
   return (
     <div className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 md:px-12 animate-reveal overflow-hidden pt-12 md:pt-20">
@@ -33,9 +33,9 @@ const Hero: React.FC<HeroProps> = ({ onStart, onViewDirectory }) => {
         </div>
 
         {/* Headline */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.1] mb-8 md:mb-12 text-black dark:text-white px-2 text-center">
-          Find Government Schemes <br/> 
-          <span className="text-transparent bg-clip-text bg-premium-gradient">You're Eligible For</span>
+        <h1 key={locale} className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.1] mb-8 md:mb-12 text-black dark:text-white px-2 text-center">
+          {t('hero.title_1')} <br/> 
+          <span className="text-transparent bg-clip-text bg-premium-gradient">{t('hero.title_2')}</span>
         </h1>
 
         {/* Subheadline */}
