@@ -1,102 +1,77 @@
 'use client';
 
 import React from 'react';
-import { ArrowRight, Sparkles, ShieldCheck, Landmark, Users, ArrowLeft } from 'lucide-react';
+import { Sparkles, ShieldCheck, Landmark, Users } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from '@/lib/i18n';
+import Header from '@/components/Header';
 
 const AboutPage: React.FC = () => {
   const router = useRouter();
   const { t } = useTranslation();
 
-  const handleStart = () => {
-    router.push('/input');
-  };
-
-  const handleBack = () => {
-    router.push('/');
+  const handleStart = () => router.push('/input');
+  
+  const handleNavigate = (view: 'home' | 'input' | 'results' | 'directory' | 'about') => {
+    switch (view) {
+      case 'home': window.location.assign('/'); break;
+      case 'input': window.location.assign('/input'); break;
+      case 'results': window.location.assign('/results'); break;
+      case 'directory': window.location.assign('/directory'); break;
+      case 'about': break;
+    }
   };
 
   return (
-    <div className="relative min-h-screen animate-reveal overflow-hidden pt-32 pb-24 px-6 md:px-12 bg-white dark:bg-[#030303] text-black dark:text-white transition-colors">
-      
-      {/* Background Glows */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-premium-primary/10 rounded-full blur-[120px] animate-pulse"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-premium-accent/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '-3s' }}></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
-
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto space-y-32">
+    <div className="min-h-screen bg-[var(--bg-neutral)]">
+      <Header onNavigate={handleNavigate} />
+      <div className="pt-32 pb-24 px-6 md:px-12 max-w-5xl mx-auto">
         
-        {/* Main Content */}
-        <div className="w-full flex flex-col items-center text-center pt-20">
-          <button
-            onClick={handleBack}
-            className="group flex items-center space-x-3 text-xs font-semibold text-gray-500 hover:text-black dark:hover:text-white transition-colors mb-12"
-          >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-2 transition-transform" />
-            <span>{t('common.back_to_home')}</span>
-          </button>
+        {/* Header */}
+        <div className="flex flex-col items-center text-center mb-20">
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.1] mb-12 text-black dark:text-white w-full max-w-5xl">
-            <span className="block animate-reveal">{t('about.title_1')}</span>
-            <span className="block mt-4 text-transparent bg-clip-text bg-premium-gradient">
-              <span className="typewriter">{t('about.title_2')}</span>
-            </span>
+          <h1 className="text-4xl md:text-6xl font-extrabold text-[var(--brand-blue)] mb-8 tracking-tight">
+            {t('about.title_1')} <br />
+            <span className="text-[var(--brand-accent)]">{t('about.title_2')}</span>
           </h1>
 
-          <p className="max-w-4xl text-lg md:text-2xl text-gray-600 dark:text-white/60 font-medium leading-[1.6] mb-20 text-balance">
+          <p className="text-lg md:text-xl text-[var(--text-muted)] leading-relaxed max-w-3xl">
             {t('about.description')}
           </p>
 
           <button
             onClick={handleStart}
-            className="bg-black dark:bg-white text-white dark:text-black px-16 py-6 rounded-2xl font-bold text-base hover:bg-premium-primary transition-all"
+            className="btn-primary mt-12"
           >
             {t('hero.start_search')}
           </button>
         </div>
 
-        {/* Mission & Vision Section */}
-        <div className="w-full max-w-6xl mx-auto rounded-[2.5rem] p-12 md:p-20 border border-gray-100 dark:border-white/5 text-center bg-gray-50 dark:bg-white/[0.02]">
-          <h2 className="text-3xl font-black mb-8 text-black dark:text-white">
+        {/* Mission Section */}
+        <div className="bg-gray-50 border border-gray-100 p-12 md:p-16 text-center mb-12 rounded-3xl">
+          <h2 className="text-3xl font-bold text-[var(--brand-blue)] mb-6">
             {t('about.mission_title')}
           </h2>
-          <p className="text-gray-600 dark:text-white/60 text-lg leading-relaxed max-w-4xl mx-auto">
+          <p className="text-[var(--text-muted)] text-lg leading-relaxed max-w-3xl mx-auto">
             {t('about.mission_desc')}
           </p>
         </div>
 
         {/* Features Section */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-10 rounded-[2rem] border border-gray-100 dark:border-white/5 flex flex-col items-center text-center bg-white dark:bg-white/[0.02] hover:border-indigo-500/30 transition-all duration-300">
-            <div className="w-16 h-16 bg-indigo-50 dark:bg-white/[0.03] rounded-3xl flex items-center justify-center mb-8">
-              <Users className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { icon: Users, title: t('hero.feature_1_title'), desc: t('hero.feature_1_desc') },
+            { icon: Sparkles, title: t('hero.feature_2_title'), desc: t('hero.feature_2_desc') },
+            { icon: Landmark, title: t('hero.feature_3_title'), desc: t('hero.feature_3_desc') },
+          ].map((item, idx) => (
+            <div key={idx} className="bg-white p-8 flex flex-col items-center text-center rounded-3xl border border-gray-100">
+              <div className="w-16 h-16 bg-slate-100 rounded-2xl flex items-center justify-center mb-6 text-[var(--brand-accent)]">
+                <item.icon className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold text-[var(--brand-blue)] mb-3">{item.title}</h3>
+              <p className="text-sm text-[var(--text-muted)] leading-relaxed">{item.desc}</p>
             </div>
-            <h3 className="text-xl font-black mb-4 text-black dark:text-white">{t('hero.feature_1_title')}</h3>
-            <p className="text-gray-500 dark:text-white/50 text-sm leading-relaxed">
-              {t('hero.feature_1_desc')}
-            </p>
-          </div>
-
-          <div className="p-10 rounded-[2rem] border border-gray-100 dark:border-white/5 flex flex-col items-center text-center bg-white dark:bg-white/[0.02] hover:border-pink-500/30 transition-all duration-300">
-            <div className="w-16 h-16 bg-pink-50 dark:bg-white/[0.03] rounded-3xl flex items-center justify-center mb-8">
-              <Sparkles className="w-8 h-8 text-pink-600 dark:text-pink-400" />
-            </div>
-            <h3 className="text-xl font-black mb-4">{t('hero.feature_2_title')}</h3>
-            <p className="text-gray-500 dark:text-white/50 text-sm leading-relaxed">
-              {t('hero.feature_2_desc')}
-            </p>
-          </div>
-
-          <div className="p-10 rounded-[2rem] border border-gray-100 dark:border-white/5 flex flex-col items-center text-center bg-white dark:bg-white/[0.02] hover:border-emerald-500/30 transition-all duration-300">
-            <div className="w-16 h-16 bg-emerald-50 dark:bg-white/[0.03] rounded-3xl flex items-center justify-center mb-8">
-              <Landmark className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
-            </div>
-            <h3 className="text-xl font-black mb-4">{t('hero.feature_3_title')}</h3>
-            <p className="text-gray-500 dark:text-white/50 text-sm leading-relaxed">
-              {t('hero.feature_3_desc')}
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </div>

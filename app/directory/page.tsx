@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Scheme } from '@/lib/types';
 import { useTranslation } from '@/lib/i18n';
 import schemesData from '@/data/schemes.json';
 import ResultsView from '@/components/ResultsView';
@@ -13,12 +12,10 @@ export default function DirectoryPage() {
   const { t } = useTranslation();
   const [filter, setFilter] = useState<'all' | 'highly-relevant' | 'might-apply' | 'explore'>('all');
 
-  // Get user profile from localStorage
   const userProfile = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userProfile') || 'null') : null;
 
   const calculateRelevance = (scheme: any, profile: any) => {
     if (!profile) return 'explore';
-
     const eligibilityMatch = scheme.eligibility?.some((el: string) =>
       el === 'all' ||
       el === profile.occupation.toLowerCase() ||
@@ -33,13 +30,9 @@ export default function DirectoryPage() {
 
     const incomeMatch = !scheme.incomeLimit || profile.income <= scheme.incomeLimit;
 
-    if (eligibilityMatch && ageMatch && incomeMatch) {
-      return 'highly-relevant';
-    } else if (eligibilityMatch || ageMatch || incomeMatch) {
-      return 'might-apply';
-    } else {
-      return 'explore';
-    }
+    if (eligibilityMatch && ageMatch && incomeMatch) return 'highly-relevant';
+    if (eligibilityMatch || ageMatch || incomeMatch) return 'might-apply';
+    return 'explore';
   };
 
   const allSchemesUnfiltered = useMemo(() => {
@@ -54,89 +47,61 @@ export default function DirectoryPage() {
     return allSchemesUnfiltered.filter(scheme => scheme.relevance === filter);
   }, [allSchemesUnfiltered, filter]);
 
-  const handleBack = () => {
-    router.push('/');
-  };
-
   const handleNavigate = (view: 'home' | 'input' | 'results' | 'directory' | 'about') => {
     switch (view) {
-      case 'home':
-        router.push('/');
-        break;
-      case 'input':
-        router.push('/input');
-        break;
-      case 'results':
-        router.push('/results');
-        break;
-      case 'about':
-        router.push('/about');
-        break;
-      default:
-        router.push('/');
+      case 'home': window.location.assign('/'); break;
+      case 'input': window.location.assign('/input'); break;
+      case 'results': window.location.assign('/results'); break;
+      case 'about': window.location.assign('/about'); break;
+      case 'directory': break;
+      default: window.location.assign('/');
     }
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)]">
       <Header onNavigate={handleNavigate} />
-      <div className="pt-24 md:pt-32 pb-8 md:pb-12">
-        <div className="mx-auto px-4 md:px-8">
-          {/* Filter Buttons */}
-          <div className="mb-12 md:mb-16 mt-8">
-            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
-              <button
-                onClick={() => setFilter('all')}
-                className={`px-5 py-2.5 rounded-xl font-black text-[10px] md:text-[11px] uppercase tracking-widest transition-all ${
-                  filter === 'all'
-                    ? 'bg-white text-black dark:text-white shadow-2xl'
-                    : 'bg-white/5 border border-white/10 text-black/40 dark:text-white/40 hover:bg-white/10 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                {t('results.all_schemes')} ({allSchemesUnfiltered.length})
-              </button>
-              <button
-                onClick={() => setFilter('highly-relevant')}
-                className={`px-5 py-2.5 rounded-xl font-black text-[10px] md:text-[11px] uppercase tracking-widest transition-all ${
-                  filter === 'highly-relevant'
-                    ? 'bg-green-500 text-black dark:text-white dark:text-white shadow-2xl'
-                    : 'bg-white/5 border border-white/10 text-black/40 dark:text-white/40 hover:bg-white/10 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                ✅ {t('results.highly_relevant')} ({allSchemesUnfiltered.filter(s => s.relevance === 'highly-relevant').length})
-              </button>
-              <button
-                onClick={() => setFilter('might-apply')}
-                className={`px-5 py-2.5 rounded-xl font-black text-[10px] md:text-[11px] uppercase tracking-widest transition-all ${
-                  filter === 'might-apply'
-                    ? 'bg-yellow-500 text-black dark:text-white shadow-2xl'
-                    : 'bg-white/5 border border-white/10 text-black/40 dark:text-white/40 hover:bg-white/10 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                👍 {t('results.might_apply')} ({allSchemesUnfiltered.filter(s => s.relevance === 'might-apply').length})
-              </button>
-              <button
-                onClick={() => setFilter('explore')}
-                className={`px-5 py-2.5 rounded-xl font-black text-[10px] md:text-[11px] uppercase tracking-widest transition-all ${
-                  filter === 'explore'
-                    ? 'bg-blue-500 text-black dark:text-white dark:text-white shadow-2xl'
-                    : 'bg-white/5 border border-white/10 text-black/40 dark:text-white/40 hover:bg-white/10 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                ℹ️ {t('results.explore')} ({allSchemesUnfiltered.filter(s => s.relevance === 'explore').length})
-              </button>
-            </div>
-          </div>
-          
-          <div className="animate-reveal">
-            <ResultsView
-              schemes={allSchemes}
-              onBack={handleBack}
-              isDirectory
-            />
-          </div>
+      
+      <main className="pt-24 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
+        <button 
+          onClick={() => window.location.assign('/')}
+          className="text-xs font-semibold text-[var(--text-muted)] hover:text-[var(--brand-blue)] transition-colors mb-4 block"
+        >
+          ← Back to home
+        </button>
+
+        <h1 className="text-3xl font-bold text-[var(--text-main)] mb-2">
+          {t('nav.browse_all')}
+        </h1>
+        <p className="text-sm text-[var(--text-muted)] mb-8">
+          {t('results.directory_msg', { count: allSchemes.length })}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mb-8">
+          {[
+            { id: 'all', label: t('results.all_schemes') },
+            { id: 'highly-relevant', label: t('results.highly_relevant') },
+            { id: 'might-apply', label: t('results.might_apply') },
+            { id: 'explore', label: t('results.explore') }
+          ].map(f => (
+            <button
+              key={f.id}
+              onClick={() => setFilter(f.id as any)}
+              className={`px-4 py-1.5 rounded-[var(--border-radius)] font-medium text-sm transition-all ${
+                filter === f.id 
+                  ? 'bg-[var(--brand-blue)] text-white' 
+                  : 'bg-white border border-slate-200 text-[var(--text-muted)] hover:border-slate-300'
+              }`}
+            >
+              {f.label}
+            </button>
+          ))}
         </div>
-      </div>
-    </>
+
+        <div className="w-full">
+          <ResultsView schemes={allSchemes} isDirectory />
+        </div>
+      </main>
+    </div>
   );
 }

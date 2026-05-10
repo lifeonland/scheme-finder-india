@@ -23,10 +23,19 @@
     "about": "About",
     "find_schemes": "Find Schemes"
   },
+  "trust": {
+    "official_sources": "Official Sources",
+    "official_sources_desc": "Information sourced directly from government portals.",
+    "privacy": "Privacy First",
+    "privacy_desc": "Your data remains local and is never stored on our servers.",
+    "disclaimer": "Independent Platform",
+    "disclaimer_desc": "Scheme Finder is not affiliated with the Government of India."
+  },
   "hero": {
-    "badge": "🇮🇳 Trusted Government Scheme Discovery Platform",
-    "title_1": "Find Government Schemes You’re",
-    "title_2": "Eligible For",
+    "badge": "🇮🇳 Trusted government scheme discovery platform",
+    "line1": "Find Government Schemes",
+    "line2_a": "You’re",
+    "line2_b": "Eligible For",
     "description": "Discover subsidies, scholarships, welfare programs, and farmer benefits tailored to your profile — all in one place.",
     "feature_1_title": "Personalized Matching",
     "feature_1_desc": "Tailored results based on your unique profile",

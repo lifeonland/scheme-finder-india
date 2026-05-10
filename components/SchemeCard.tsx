@@ -23,35 +23,35 @@ const SchemeCard: React.FC<SchemeCardProps> = ({ scheme, relevance }) => {
   const benefit = getBenefit();
 
   return (
-    <div className="bg-white border border-gray-100 rounded-[2.5rem] p-8 flex flex-col h-full shadow-sm hover:shadow-xl transition-all duration-300">
-      <h3 className="text-2xl font-black text-black leading-snug mb-4">
+    <div className="section-card p-8 flex flex-col h-full hover:border-[var(--brand-blue)] transition-all">
+      <h3 className="text-lg font-bold text-[var(--text-main)] mb-3">
         {name}
       </h3>
       
-      <p className="text-gray-500 font-medium text-sm leading-relaxed mb-8 flex-grow">
+      <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-6 flex-grow">
         {description}
       </p>
 
-      <div className="space-y-6">
-        <div className="flex items-center p-4 rounded-2xl bg-pink-50 border border-pink-100">
-          <CheckCircle2 className="w-5 h-5 text-pink-500 mr-3 flex-shrink-0" />
-          <p className="text-sm font-black text-pink-900 leading-snug">{benefit}</p>
+      <div className="space-y-4">
+        <div className="flex items-center p-4 rounded-[var(--border-radius)] bg-indigo-50 border border-indigo-100">
+          <CheckCircle2 className="w-5 h-5 text-[var(--brand-blue)] mr-3 flex-shrink-0" />
+          <p className="text-sm font-semibold text-[var(--brand-blue)] leading-snug">{benefit}</p>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          <div className="p-3 rounded-xl bg-gray-50 border border-gray-100">
-            <div className="flex items-center text-[9px] font-black uppercase tracking-widest text-gray-400 mb-1">
+        <div className="grid grid-cols-2 gap-3">
+          <div className="p-3 rounded-[var(--border-radius)] bg-slate-50 border border-slate-100">
+            <div className="flex items-center text-xs font-semibold text-[var(--text-muted)] mb-1">
               <User className="w-3 h-3 mr-1" /> {t('common.age_group')}
             </div>
-            <p className="text-xs font-black text-black">
+            <p className="text-sm font-bold text-[var(--text-main)]">
               {scheme.minAge !== null ? `${scheme.minAge}-${scheme.maxAge}` : t('common.all')}
             </p>
           </div>
-          <div className="p-3 rounded-xl bg-gray-50 border border-gray-100">
-            <div className="flex items-center text-[9px] font-black uppercase tracking-widest text-gray-400 mb-1">
+          <div className="p-3 rounded-[var(--border-radius)] bg-slate-50 border border-slate-100">
+            <div className="flex items-center text-xs font-semibold text-[var(--text-muted)] mb-1">
               <Wallet className="w-3 h-3 mr-1" /> {t('common.income_limit')}
             </div>
-            <p className="text-xs font-black text-black">
+            <p className="text-sm font-bold text-[var(--text-main)]">
               {scheme.incomeLimit ? `₹${(scheme.incomeLimit / 100000).toFixed(1)}L` : t('common.none')}
             </p>
           </div>
@@ -61,9 +61,9 @@ const SchemeCard: React.FC<SchemeCardProps> = ({ scheme, relevance }) => {
           href={scheme.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full flex items-center justify-center bg-black text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-gray-800 transition-all"
+          className="btn-primary flex items-center justify-center !py-3"
         >
-          Apply Now
+          {t('common.apply_now')}
         </a>
       </div>
     </div>

@@ -1,17 +1,15 @@
 import React from 'react';
-import { Landmark, Search } from 'lucide-react';
 
 interface LogoProps {
   className?: string;
-  iconSize?: number;
 }
 
-const Logo: React.FC<LogoProps> = ({ className = "w-10 h-10", iconSize = 20 }) => {
+const Logo: React.FC<LogoProps> = ({ className = "w-8 h-8" }) => {
   return (
-    <div className={`${className} bg-gradient-to-br from-indigo-500 to-violet-600 rounded-full flex items-center justify-center relative overflow-hidden shadow-lg shadow-indigo-500/20 border border-white/10`}>
-      {/* Icon */}
-      <div className="relative z-10 flex items-center justify-center text-white">
-        <Landmark size={iconSize} />
+    <div className={`${className} bg-[var(--brand-blue)] rounded flex items-center justify-center relative`}>
+      {/* Abstract shield/guide shape */}
+      <div className="w-5 h-5 border-2 border-white rounded-t-full rounded-b-sm flex items-center justify-center">
+        <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
       </div>
     </div>
   );
