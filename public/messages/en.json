@@ -17,18 +17,21 @@
     "find_schemes": "Find Schemes"
   },
   "hero": {
-    "title_1": "Unlock Your Government Benefits",
-    "title_2": "Made Just for You",
-    "description": "Stop missing out on benefits you're entitled to. Get personalized scheme recommendations that match your profile and unlock financial support.",
+    "badge": "🇮🇳 Trusted Government Scheme Discovery Platform",
+    "title_1": "Find Government Schemes You’re",
+    "title_2": "Eligible For",
+    "description": "Discover subsidies, scholarships, welfare programs, and farmer benefits tailored to your profile — all in one place.",
     "feature_1_title": "Personalized Matching",
-    "feature_1_desc": "Based on your age and income",
-    "feature_2_title": "Official Schemes",
-    "feature_2_desc": "Verified government programs",
+    "feature_1_desc": "Tailored results based on your unique profile",
+    "feature_2_title": "Subsidies & Benefits",
+    "feature_2_desc": "Direct access to central and state assistance",
     "feature_3_title": "Easy Application",
-    "feature_3_desc": "Direct links and guidance",
-    "start_search": "Start Your Search",
-    "browse_schemes": "Browse All Schemes",
-    "trust_text": "Trusted by thousands of Indians. Free to use. No personal data stored."
+    "feature_3_desc": "Simplified guidance for official portal links",
+    "start_search": "Find Your Schemes",
+    "browse_schemes": "Browse Directory",
+    "trust_no_signup": "No signup required",
+    "trust_free": "Free to use",
+    "trust_official": "Official government links"
   },
   "form": {
     "title": "Profile Analysis",
@@ -66,6 +69,7 @@
     "title": "Potential Unlocked.",
     "directory_title": "Scheme Directory",
     "refine_profile": "Refine Profile",
+    "all_schemes": "All Schemes",
     "count_msg": "Our algorithm identified {count} programs specifically aligned with your profile.",
     "directory_msg": "Displaying all {count} programs available in our repository.",
     "no_matches": "No Matches Found.",
@@ -74,6 +78,10 @@
     "highly_relevant": "Relevant",
     "might_apply": "Potential",
     "explore": "Explore"
+  },
+  "loading": {
+    "decrypting": "Decrypting Repository",
+    "syncing": "Syncing with National Database..."
   },
   "footer": {
     "description": "Helping you discover relevant government schemes easily.",

@@ -37,11 +37,9 @@ export default function InputPage() {
   return (
     <>
       <Header onNavigate={handleNavigate} />
-      <div className="pt-24 md:pt-32 pb-8 md:pb-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-col items-center animate-reveal">
-            <InputForm onSearch={handleSearch} onBack={() => router.push('/')} />
-          </div>
+      <div className="pt-24 md:pt-32 pb-8 md:pb-12 px-4 md:px-8">
+        <div className="flex flex-col items-center animate-reveal">
+          <InputForm onSearch={handleSearch} onBack={() => router.push('/')} />
         </div>
       </div>
     </>

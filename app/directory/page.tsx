@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { Scheme } from '@/lib/types';
-import { translations, Language } from '@/lib/translations';
+import { useTranslation } from '@/lib/i18n';
 import schemesData from '@/data/schemes.json';
 import ResultsView from '@/components/ResultsView';
 import Header from '@/components/Header';
@@ -10,13 +10,11 @@ import { useRouter } from 'next/navigation';
 
 export default function DirectoryPage() {
   const router = useRouter();
-  const [lang, setLang] = useState<Language>('en');
+  const { t } = useTranslation();
   const [filter, setFilter] = useState<'all' | 'highly-relevant' | 'might-apply' | 'explore'>('all');
 
   // Get user profile from localStorage
   const userProfile = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userProfile') || 'null') : null;
-
-  const t = translations[lang] || translations.en;
 
   const calculateRelevance = (scheme: any, profile: any) => {
     if (!profile) return 'explore';
@@ -44,21 +42,12 @@ export default function DirectoryPage() {
     }
   };
 
-  const localizeScheme = (scheme: any, targetLang: string) => {
-    return {
-      ...scheme,
-      name: typeof scheme.name === 'string' ? scheme.name : scheme.name?.[targetLang] || scheme.name?.en || 'Unknown Scheme',
-      description: typeof scheme.description === 'string' ? scheme.description : scheme.description?.[targetLang] || scheme.description?.en || 'No description',
-      benefit: typeof scheme.benefit === 'string' ? scheme.benefit : scheme.benefit?.[targetLang] || scheme.benefit?.en || 'No benefit info',
-    };
-  };
-
   const allSchemesUnfiltered = useMemo(() => {
     return (schemesData as any[]).map(scheme => ({
-      ...localizeScheme(scheme, lang as string),
+      ...scheme,
       relevance: calculateRelevance(scheme, userProfile)
     }));
-  }, [lang, userProfile]);
+  }, [userProfile]);
 
   const allSchemes = useMemo(() => {
     if (filter === 'all') return allSchemesUnfiltered;
@@ -92,49 +81,49 @@ export default function DirectoryPage() {
     <>
       <Header onNavigate={handleNavigate} />
       <div className="pt-24 md:pt-32 pb-8 md:pb-12">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="mx-auto px-4 md:px-8">
           {/* Filter Buttons */}
-          <div className="mb-8">
-            <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
+          <div className="mb-12 md:mb-16 mt-8">
+            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
               <button
                 onClick={() => setFilter('all')}
-                className={`px-6 py-3 rounded-2xl font-bold text-sm uppercase tracking-widest transition-all ${
+                className={`px-5 py-2.5 rounded-xl font-black text-[10px] md:text-[11px] uppercase tracking-widest transition-all ${
                   filter === 'all'
-                    ? 'bg-premium-gradient text-white shadow-lg'
-                    : 'bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:text-white'
+                    ? 'bg-white text-black dark:text-white shadow-2xl'
+                    : 'bg-white/5 border border-white/10 text-black/40 dark:text-white/40 hover:bg-white/10 hover:text-black dark:hover:text-white'
                 }`}
               >
-                All Schemes ({allSchemesUnfiltered.length})
+                {t('results.all_schemes')} ({allSchemesUnfiltered.length})
               </button>
               <button
                 onClick={() => setFilter('highly-relevant')}
-                className={`px-6 py-3 rounded-2xl font-bold text-sm uppercase tracking-widest transition-all ${
+                className={`px-5 py-2.5 rounded-xl font-black text-[10px] md:text-[11px] uppercase tracking-widest transition-all ${
                   filter === 'highly-relevant'
-                    ? 'bg-green-500 text-white shadow-lg'
-                    : 'bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:text-white'
+                    ? 'bg-green-500 text-black dark:text-white dark:text-white shadow-2xl'
+                    : 'bg-white/5 border border-white/10 text-black/40 dark:text-white/40 hover:bg-white/10 hover:text-black dark:hover:text-white'
                 }`}
               >
-                ✅ Highly Relevant ({allSchemesUnfiltered.filter(s => s.relevance === 'highly-relevant').length})
+                ✅ {t('results.highly_relevant')} ({allSchemesUnfiltered.filter(s => s.relevance === 'highly-relevant').length})
               </button>
               <button
                 onClick={() => setFilter('might-apply')}
-                className={`px-6 py-3 rounded-2xl font-bold text-sm uppercase tracking-widest transition-all ${
+                className={`px-5 py-2.5 rounded-xl font-black text-[10px] md:text-[11px] uppercase tracking-widest transition-all ${
                   filter === 'might-apply'
-                    ? 'bg-yellow-500 text-white shadow-lg'
-                    : 'bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:text-white'
+                    ? 'bg-yellow-500 text-black dark:text-white shadow-2xl'
+                    : 'bg-white/5 border border-white/10 text-black/40 dark:text-white/40 hover:bg-white/10 hover:text-black dark:hover:text-white'
                 }`}
               >
-                👍 Might Apply ({allSchemesUnfiltered.filter(s => s.relevance === 'might-apply').length})
+                👍 {t('results.might_apply')} ({allSchemesUnfiltered.filter(s => s.relevance === 'might-apply').length})
               </button>
               <button
                 onClick={() => setFilter('explore')}
-                className={`px-6 py-3 rounded-2xl font-bold text-sm uppercase tracking-widest transition-all ${
+                className={`px-5 py-2.5 rounded-xl font-black text-[10px] md:text-[11px] uppercase tracking-widest transition-all ${
                   filter === 'explore'
-                    ? 'bg-blue-500 text-white shadow-lg'
-                    : 'bg-white/5 border border-white/10 text-white/60 hover:bg-white/10 hover:text-white'
+                    ? 'bg-blue-500 text-black dark:text-white dark:text-white shadow-2xl'
+                    : 'bg-white/5 border border-white/10 text-black/40 dark:text-white/40 hover:bg-white/10 hover:text-black dark:hover:text-white'
                 }`}
               >
-                ℹ️ Explore ({allSchemesUnfiltered.filter(s => s.relevance === 'explore').length})
+                ℹ️ {t('results.explore')} ({allSchemesUnfiltered.filter(s => s.relevance === 'explore').length})
               </button>
             </div>
           </div>

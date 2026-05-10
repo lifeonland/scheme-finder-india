@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { UserProfile, Scheme } from '@/lib/types';
 import { filterSchemes } from '@/lib/eligibility';
-import { translations, Language } from '@/lib/translations';
+import { useTranslation } from '@/lib/i18n';
 import schemesData from '@/data/schemes.json';
 import ResultsView from '@/components/ResultsView';
 import Header from '@/components/Header';
@@ -11,8 +11,8 @@ import { useRouter } from 'next/navigation';
 
 export default function ResultsPage() {
   const router = useRouter();
+  const { t } = useTranslation();
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
-  const [lang, setLang] = useState<Language>('en');
 
   useEffect(() => {
     // Get profile from localStorage
@@ -25,22 +25,10 @@ export default function ResultsPage() {
     }
   }, [router]);
 
-  const t = translations[lang] || translations.en;
-
-  const localizeScheme = (scheme: any, targetLang: string) => {
-    return {
-      ...scheme,
-      name: typeof scheme.name === 'string' ? scheme.name : scheme.name?.[targetLang] || scheme.name?.en || 'Unknown Scheme',
-      description: typeof scheme.description === 'string' ? scheme.description : scheme.description?.[targetLang] || scheme.description?.en || 'No description',
-      benefit: typeof scheme.benefit === 'string' ? scheme.benefit : scheme.benefit?.[targetLang] || scheme.benefit?.en || 'No benefit info',
-    };
-  };
-
   const eligibleSchemes = useMemo(() => {
     if (!userProfile) return [];
-    const filtered = filterSchemes(schemesData as any[], userProfile);
-    return filtered.map(scheme => localizeScheme(scheme, lang as string));
-  }, [userProfile, lang]);
+    return filterSchemes(schemesData as any[], userProfile);
+  }, [userProfile]);
 
   const handleBack = () => {
     router.push('/input');
@@ -70,9 +58,9 @@ export default function ResultsPage() {
       <>
         <Header onNavigate={handleNavigate} />
         <div className="pt-24 md:pt-32 pb-8 md:pb-12">
-          <div className="max-w-6xl mx-auto px-4">
+          <div className="mx-auto px-4 md:px-8">
             <div className="flex flex-col items-center justify-center min-h-[60vh]">
-              <p className="text-white/60">Loading your results...</p>
+              <p className="text-black dark:text-white/60 dark:text-black dark:text-white/60 dark:text-white/60">{t('common.loading')}</p>
             </div>
           </div>
         </div>
@@ -83,11 +71,9 @@ export default function ResultsPage() {
   return (
     <>
       <Header onNavigate={handleNavigate} />
-      <div className="pt-24 md:pt-32 pb-8 md:pb-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="animate-reveal">
-            <ResultsView schemes={eligibleSchemes} onBack={handleBack} />
-          </div>
+      <div className="pt-24 md:pt-32 pb-8 md:pb-12 px-4 md:px-8">
+        <div className="animate-reveal">
+          <ResultsView schemes={eligibleSchemes} onBack={handleBack} />
         </div>
       </div>
     </>

@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from "next-themes";
+import { LanguageProvider } from "@/lib/i18n";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,10 +12,12 @@ export const metadata: Metadata = {
   description: "Find central and state government schemes you are eligible for. Personalized, fast, and available in multiple Indian languages.",
   keywords: ["Government Schemes", "India", "PM Kisan", "Scholarships", "Eligibility Checker"],
   authors: [{ name: "Scheme Finder Team" }],
-  viewport: "width=device-width, initial-scale=1",
 };
 
-import { LanguageProvider } from "@/lib/i18n";
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export default function RootLayout({
   children,

@@ -48,20 +48,20 @@ const InputForm: React.FC<InputFormProps> = ({ onSearch, onBack }) => {
           {onBack && (
             <button
               onClick={onBack}
-              className="group flex items-center space-x-3 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-white/30 hover:text-white transition-colors mb-6 md:mb-8 py-2"
+              className="group flex items-center space-x-3 text-xs font-semibold text-gray-500 hover:text-black dark:hover:text-white transition-colors mb-8 py-2"
             >
               <ArrowLeft className="w-4 h-4 group-hover:-translate-x-2 transition-transform" />
               <span>{t('common.back_to_home')}</span>
             </button>
           )}
           
-          <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-white mb-2 md:mb-4">{t('form.title')}</h2>
-          <p className="text-sm md:text-base text-white/40 font-medium mb-8 md:mb-12">{t('form.description')}</p>
+          <h2 className="text-3xl md:text-4xl font-black tracking-tight text-black dark:text-white mb-4 md:mb-6">{t('form.title')}</h2>
+          <p className="text-sm md:text-base text-gray-600 dark:text-white/40 font-medium mb-10 md:mb-16 leading-relaxed">{t('form.description')}</p>
 
           <form onSubmit={handleSubmit} className="space-y-8 md:space-y-10">
             <div className="space-y-3 md:space-y-4">
-              <label className="flex items-center text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-white/30 ml-2">
-                <User className="w-3.5 h-3.5 mr-2 text-premium-primary" />
+              <label className="flex items-center text-xs font-semibold text-gray-500 dark:text-white/40 ml-2">
+                <User className="w-4 h-4 mr-3 text-indigo-500" />
                 {t('form.age_label')}
               </label>
               <input
@@ -71,14 +71,14 @@ const InputForm: React.FC<InputFormProps> = ({ onSearch, onBack }) => {
                 max="120"
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
-                placeholder="00"
-                className="premium-input text-base md:text-lg font-semibold py-4 px-6"
+                placeholder="25"
+                className="premium-input text-base md:text-lg font-medium py-4 px-6"
               />
             </div>
 
             <div className="space-y-3 md:space-y-4">
-              <label className="flex items-center text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-white/30 ml-2">
-                <Briefcase className="w-3.5 h-3.5 mr-2 text-premium-secondary" />
+              <label className="flex items-center text-xs font-semibold text-gray-500 dark:text-white/40 ml-2">
+                <Briefcase className="w-4 h-4 mr-3 text-pink-500" />
                 {t('form.role_label')}
               </label>
               <select
@@ -87,9 +87,9 @@ const InputForm: React.FC<InputFormProps> = ({ onSearch, onBack }) => {
                 onChange={(e) => setOccupation(e.target.value)}
                 className="premium-input text-sm md:text-base font-medium appearance-none cursor-pointer py-4 px-6"
               >
-                <option value="" disabled className="bg-black">{t('form.role_placeholder')}</option>
+                <option value="" disabled>{t('form.role_placeholder')}</option>
                 {occupations.map((occ) => (
-                  <option key={occ} value={occ} className="bg-black">
+                  <option key={occ} value={occ}>
                     {t(`form.occupations.${occ}`)}
                   </option>
                 ))}
@@ -97,8 +97,8 @@ const InputForm: React.FC<InputFormProps> = ({ onSearch, onBack }) => {
             </div>
 
             <div className="space-y-3 md:space-y-4">
-              <label className="flex items-center text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-white/30 ml-2">
-                <IndianRupee className="w-3.5 h-3.5 mr-2 text-premium-accent" />
+              <label className="flex items-center text-xs font-semibold text-gray-500 dark:text-white/40 ml-2">
+                <IndianRupee className="w-4 h-4 mr-3 text-emerald-500" />
                 {t('form.income_label')}
               </label>
               <select
@@ -107,9 +107,9 @@ const InputForm: React.FC<InputFormProps> = ({ onSearch, onBack }) => {
                 onChange={(e) => setIncome(e.target.value)}
                 className="premium-input text-sm md:text-base font-medium appearance-none cursor-pointer py-4 px-6"
               >
-                <option value="" disabled className="bg-black">{t('form.income_placeholder')}</option>
+                <option value="" disabled>{t('form.income_placeholder')}</option>
                 {incomeRanges.map((range) => (
-                  <option key={range.value} value={range.value} className="bg-black">
+                  <option key={range.value} value={range.value}>
                     {range.label}
                   </option>
                 ))}
@@ -118,10 +118,10 @@ const InputForm: React.FC<InputFormProps> = ({ onSearch, onBack }) => {
 
             <button 
               type="submit" 
-              className="w-full bg-premium-gradient text-white font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-[10px] md:text-xs py-5 md:py-6 rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-2xl shadow-premium-primary/30 flex items-center justify-center group"
+              className="w-full bg-black dark:bg-white text-white dark:text-black font-bold py-5 rounded-2xl hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center"
             >
               {t('form.submit')}
-              <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ChevronRight className="ml-2 w-4 h-4" />
             </button>
           </form>
         </div>

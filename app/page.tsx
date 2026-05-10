@@ -34,10 +34,8 @@ export default function Home() {
   return (
     <>
       <Header onNavigate={handleNavigate} />
-      <div className="pt-24 md:pt-32 pb-8 md:pb-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <Hero onStart={handleStart} onViewDirectory={() => router.push('/directory')} />
-        </div>
+      <div className="pt-24 md:pt-32 pb-32 md:pb-48 px-4 md:px-8">
+        <Hero onStart={handleStart} onViewDirectory={() => router.push('/directory')} />
       </div>
     </>
   );

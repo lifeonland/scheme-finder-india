@@ -33,9 +33,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const loadMessages = async () => {
       try {
+        console.log(`Attempting to load messages for locale: ${locale}`);
         const response = await fetch(`/messages/${locale}.json`);
-        if (!response.ok) throw new Error('Failed to fetch messages');
+        if (!response.ok) throw new Error(`Failed to fetch messages: ${response.statusText}`);
         const data = await response.json();
+        console.log(`Successfully loaded messages for locale: ${locale}`, data);
         setMessages(data);
         localStorage.setItem('scheme-finder-locale', locale);
       } catch (error) {

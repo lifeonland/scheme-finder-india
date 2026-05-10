@@ -2,27 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --text-main: #030712;
+  --text-muted: #4b5563;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --premium-primary: #4f46e5;
+}
+
+.dark {
+  --bg-primary: #030303;
+  --bg-secondary: #0a0a0a;
+  --text-main: #ffffff;
+  --text-muted: #9CA3AF;
+  --glass-bg: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --premium-primary: #818cf8;
+}
+
 body {
-  background-color: #050505;
-  color: #FFFFFF;
-  min-height: 100vh;
-  background-image: 
-    radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 40%);
-  background-attachment: fixed;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer components {
   .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-2xl;
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(24px);
+    @apply shadow-2xl;
   }
   
   .premium-button {
-    @apply relative overflow-hidden bg-white text-black font-bold px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95 shadow-xl hover:shadow-white/20;
+    @apply relative overflow-hidden bg-black dark:bg-white text-white dark:text-black font-black px-10 py-4 rounded-2xl transition-all duration-500 hover:scale-[1.03] active:scale-95 shadow-2xl;
   }
 
   .premium-input {
-    @apply w-full bg-white/[0.05] border border-white/10 rounded-2xl px-6 py-4 text-lg focus:ring-2 focus:ring-premium-primary focus:border-transparent outline-none transition-all placeholder:text-white/20;
+    @apply w-full bg-gray-100 dark:bg-white/[0.03] border border-gray-200 dark:border-white/5 rounded-2xl px-6 py-5 text-lg focus:ring-2 focus:ring-premium-primary/50 focus:border-transparent outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-white/10;
   }
 }
 
@@ -30,7 +49,19 @@ body {
   animation: reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2.5s steps(30, end) forwards;
+}
+
 @keyframes reveal {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
 }
