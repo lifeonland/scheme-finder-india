@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ArrowRight, Sparkles, ShieldCheck, Landmark, Users, Briefcase, ArrowLeft } from 'lucide-react';
+import { ArrowRight, Sparkles, ShieldCheck, Landmark, Users, ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from '@/lib/i18n';
 
@@ -38,21 +38,19 @@ const AboutPage: React.FC = () => {
           </button>
           
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.1] mb-12 text-black dark:text-white w-full max-w-5xl">
-            <span className="block animate-reveal">Empowering India,</span>
+            <span className="block animate-reveal">{t('about.title_1')}</span>
             <span className="block mt-4 text-transparent bg-clip-text bg-premium-gradient">
-              <span className="typewriter">One Scheme at a Time.</span>
+              <span className="typewriter">{t('about.title_2')}</span>
             </span>
           </h1>
 
-          <p className="max-w-6xl text-lg md:text-2xl text-gray-600 dark:text-white/60 font-medium leading-[1.6] mb-20 text-balance">
-            Scheme Finder is dedicated to simplifying the discovery of central and state government schemes.
-            We bridge the gap between citizens and the support they deserve, ensuring everyone can access
-            opportunities tailored to their needs.
+          <p className="max-w-4xl text-lg md:text-2xl text-gray-600 dark:text-white/60 font-medium leading-[1.6] mb-20 text-balance">
+            {t('about.description')}
           </p>
 
           <button
             onClick={handleStart}
-            className="bg-black dark:bg-white text-white dark:text-black px-14 py-5 rounded-2xl font-bold text-sm hover:bg-premium-primary transition-all"
+            className="bg-black dark:bg-white text-white dark:text-black px-16 py-6 rounded-2xl font-bold text-base hover:bg-premium-primary transition-all"
           >
             {t('hero.start_search')}
           </button>
@@ -61,45 +59,42 @@ const AboutPage: React.FC = () => {
         {/* Mission & Vision Section */}
         <div className="w-full max-w-6xl mx-auto rounded-[2.5rem] p-12 md:p-20 border border-gray-100 dark:border-white/5 text-center bg-gray-50 dark:bg-white/[0.02]">
           <h2 className="text-3xl font-black mb-8 text-black dark:text-white">
-            Our Mission & Vision
+            {t('about.mission_title')}
           </h2>
           <p className="text-gray-600 dark:text-white/60 text-lg leading-relaxed max-w-4xl mx-auto">
-            Our mission is to demystify the complex world of government schemes. We strive to be your trusted,
-            transparent, and efficient guide, ensuring every Indian citizen can effortlessly identify and benefit
-            from the programs designed to uplift them. We envision a future where access to government benefits
-            is straightforward and equitable for all.
+            {t('about.mission_desc')}
           </p>
         </div>
 
         {/* Features Section */}
         <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-10 rounded-[2.5rem] border border-gray-100 dark:border-white/5 flex flex-col items-center text-center bg-white dark:bg-white/[0.02] hover:border-indigo-500/30 transition-all duration-300">
+          <div className="p-10 rounded-[2rem] border border-gray-100 dark:border-white/5 flex flex-col items-center text-center bg-white dark:bg-white/[0.02] hover:border-indigo-500/30 transition-all duration-300">
             <div className="w-16 h-16 bg-indigo-50 dark:bg-white/[0.03] rounded-3xl flex items-center justify-center mb-8">
               <Users className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />
             </div>
-            <h3 className="text-2xl font-black mb-4 text-black dark:text-white">Personalized Matching</h3>
-            <p className="text-gray-600 dark:text-white/50 text-base leading-relaxed">
-              Provide your basic details—age, occupation, and income—to get a tailored list of schemes.
+            <h3 className="text-xl font-black mb-4 text-black dark:text-white">{t('hero.feature_1_title')}</h3>
+            <p className="text-gray-500 dark:text-white/50 text-sm leading-relaxed">
+              {t('hero.feature_1_desc')}
             </p>
           </div>
 
-          <div className="p-10 rounded-[2.5rem] border border-gray-100 dark:border-white/5 flex flex-col items-center text-center bg-white dark:bg-white/[0.02] hover:border-pink-500/30 transition-all duration-300">
+          <div className="p-10 rounded-[2rem] border border-gray-100 dark:border-white/5 flex flex-col items-center text-center bg-white dark:bg-white/[0.02] hover:border-pink-500/30 transition-all duration-300">
             <div className="w-16 h-16 bg-pink-50 dark:bg-white/[0.03] rounded-3xl flex items-center justify-center mb-8">
               <Sparkles className="w-8 h-8 text-pink-600 dark:text-pink-400" />
             </div>
-            <h3 className="text-2xl font-black mb-4 text-black dark:text-white">Time-Saving</h3>
-            <p className="text-gray-600 dark:text-white/50 text-base leading-relaxed">
-              Skip hours of research. Our engine quickly filters through hundreds of schemes for you.
+            <h3 className="text-xl font-black mb-4">{t('hero.feature_2_title')}</h3>
+            <p className="text-gray-500 dark:text-white/50 text-sm leading-relaxed">
+              {t('hero.feature_2_desc')}
             </p>
           </div>
 
-          <div className="p-10 rounded-[2.5rem] border border-gray-100 dark:border-white/5 flex flex-col items-center text-center bg-white dark:bg-white/[0.02] hover:border-emerald-500/30 transition-all duration-300">
+          <div className="p-10 rounded-[2rem] border border-gray-100 dark:border-white/5 flex flex-col items-center text-center bg-white dark:bg-white/[0.02] hover:border-emerald-500/30 transition-all duration-300">
             <div className="w-16 h-16 bg-emerald-50 dark:bg-white/[0.03] rounded-3xl flex items-center justify-center mb-8">
               <Landmark className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
             </div>
-            <h3 className="text-2xl font-black mb-4 text-black dark:text-white">Clear Information</h3>
-            <p className="text-gray-600 dark:text-white/50 text-base leading-relaxed">
-              Understand benefits, eligibility, and application links at a glance.
+            <h3 className="text-xl font-black mb-4">{t('hero.feature_3_title')}</h3>
+            <p className="text-gray-500 dark:text-white/50 text-sm leading-relaxed">
+              {t('hero.feature_3_desc')}
             </p>
           </div>
         </div>
